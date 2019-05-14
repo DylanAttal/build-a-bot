@@ -27,7 +27,6 @@ export default {
 .home {
   text-align: center;
 }
-
 .robot {
   height: 300px;
 }
