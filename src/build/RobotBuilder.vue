@@ -19,10 +19,6 @@
       <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     </div>
     <div class="top-row">
-      <!-- <div class="robot-name">
-        {{ selectedRobot.head.title }}
-        <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
-      </div>-->
       <PartSelector
         :parts="availableParts.heads"
         position="top"
@@ -103,7 +99,7 @@ export default {
       return this.selectedRobot.head.onSale ? "sale-border" : "";
     },
     availableParts() {
-      return this.$store.state.parts;
+      return this.$store.state.robots.parts;
     }
   },
   methods: {
@@ -115,7 +111,9 @@ export default {
         robot.torso.cost +
         robot.rightArm.cost +
         robot.base.cost;
-      this.$store.commit("addRobotToCart", Object.assign({}, robot, { cost }));
+      this.$store
+        .dispatch("addRobotToCart", Object.assign({}, robot, { cost }))
+        .then(() => this.$router.push("/cart"));
       this.addedToCart = true;
     }
   }
