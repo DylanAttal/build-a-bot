@@ -9,7 +9,7 @@
       >
     </div>
     <div class="get-started">
-      <a href>Get started</a> building your robot!
+      <router-link to="/build">Get started</router-link>&nbsp;building your robot!
     </div>
   </div>
 </template>
